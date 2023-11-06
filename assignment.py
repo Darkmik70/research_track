@@ -116,7 +116,7 @@ group_mode = False
 while 1:    
     dist, rot_y, box_id = find_marker(group_mode)
     
-    if not box_captured:
+    if not box_captured and box_id != -1:
         # the first, nearest box is set as the point where we group alll
         box_captured.append(box_id)
     
