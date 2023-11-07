@@ -3,32 +3,27 @@ First Assignment
 
 This project is meant as a solution to an assignment for Research Track I corse. It is based on a simulator developed by developed by [Student Robotics](https://studentrobotics.org).
 
-The Goal
---------
+# The Goal
 The task for the first assignment was to write a python node that controls the robot to put all the golden boxes together.
 
-Installing and running
-----------------------
-
+# Installing and running
 This simulator requires a Python 3  to be run correctly. For more information regarding installing, running, troubleshooting etc. please refer to the [original project](
 https://github.com/CarmineD8/python_simulator/tree/assignment23_python3)
 
-Code Description
-================
+# Code Description
 This section explains sections of the code of the assignment
 
-`1.` Constants
+## 1. Constants
 Global constants were used for threasholds for robots orientation and distance, depending whether the robot is trying to grab the object or realease it.
 ```python
 GRAB_THRESHOLD = 0.4
 RELEASE_THRESHOLD = GRAB_THRESHOLD * 1.5
 ANGLE_THRESHOLD = 2.0
 ```
-Functions
----------
+## Functions
 Here are some functions, with `find_marker()` being excluded of the logic are presented 
 
-`*` `drive(speed, seconds)` - This function provides robot to drive forwards. A variation, `drive_back(speed, seconds)` drives robot backwards 
+1. `drive(speed, seconds)` - This function provides robot to drive forwards. A variation, `drive_back(speed, seconds)` drives robot backwards 
 ```python
 def drive(speed, seconds):
     R.motors[0].m0.power = speed
@@ -38,7 +33,7 @@ def drive(speed, seconds):
     R.motors[0].m1.power = 0
 ```
 
-`*` `turn_cws(speed, seconds)` - allows robot to perform clockwise rotation. Variation `turn_cnt_cws(speed,seconds)` performs counter clockwise rotation
+2. `turn_cws(speed, seconds)` - allows robot to perform clockwise rotation. Variation `turn_cnt_cws(speed,seconds)` performs counter clockwise rotation
 
 ```python
 def turn_cws(speed, seconds):
@@ -48,8 +43,7 @@ def turn_cws(speed, seconds):
     R.motors[0].m0.power = 0
     R.motors[0].m1.power = 0
 ```
-
-`2.` `find_marker(group_mode)`
+### `find_marker(group_mode)`
 This function looks for boxes and identifies the target based on the robot's mode. The pseudocode presenting its operation:
 ```python
 function find_marker(group_mode):
@@ -66,7 +60,7 @@ function find_marker(group_mode):
 ```
 
 
-`3.` Main loop 
+### Main loop 
 This part will provides the pseudocode of the main loop operation.
 
 ```python
@@ -99,7 +93,7 @@ while True:
     ELSE:
       Drive backward and attempt to grab again
 ```
-Further improvements
+# Further improvements
 --------------------
 In author's opinion these could be additional changes to improve the project:
 
