@@ -54,7 +54,7 @@ def turn_cnt_cws(speed, seconds):
           seconds (int): the time interval
     """
     turn_cws(-speed, seconds)
-
+    
 def find_marker(group_mode = False):
     """
     Searches for markers and identifies the target based on the robot's mode.
@@ -154,13 +154,15 @@ while 1:
             if R.grab(): 
                 # Robot grabbed the box
                 print("Gotcha!")
+                
                 # Add this box to the captured
                 for marker in R.see():
                     if marker.dist <= dist_threshold:
                         box_captured.append(box_id)
-                # Switch mode to find the group
-                group_mode = True
-                dist_threshold = RELEASE_THRESHOLD  # We need more space for dumping boxes
+                
+                # Switch mode to group searching, and adjust threshold for releasing
+                group_mode = True 
+                dist_threshold = RELEASE_THRESHOLD 
             else:
                 # Go back to make another attempt
                 print("Grab failed")
@@ -168,15 +170,19 @@ while 1:
         else:
             # Drop the box
             R.release()
-            group_mode = False
-            dist_threshold = GRAB_THRESHOLD # make threshould smaller to be able to grab objects
-            print(f"Box {box_captured[-1]} dumped") # The last element is the Robot should be holding
+            print(f"Box {box_captured[-1]} dumped") # The last element is the one released by Robot
             print(f" Captured boxes: {box_captured}")
+            
+            # Go back to searching mode and adapt threshold for grabbing
+            group_mode = False
+            dist_threshold = GRAB_THRESHOLD 
+            
             # go back a little 
             drive_back(20, 3)
-            # State the succes
+            
+            # State the succes when job is done
             if len(box_captured) == 6:
                 print("JOB'S DONE")
                 time.sleep(3)
-                
+
                   
