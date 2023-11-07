@@ -47,12 +47,12 @@ def turn_cws(speed, seconds):
 This function looks for boxes and identifies the target based on the robot's mode. The pseudocode presenting its operation:
 ```python
 function find_marker(group_mode):
-  Initialize distance to 100
+  initialize distance to 100
   for each marker seen by the robot:
     if in group_mode:
-      Check if the marker is part of the group and update distance and box_id
+      check if the marker is part of the group and update distance and box_id
     else:
-      Check for the closest uncollected marker and update distance and marker info
+      check for the closest uncollected marker and update distance and marker info
   if no relevant marker is found:
     return -1, -1, -1
   else:
