@@ -77,21 +77,21 @@ while True:
     Add box_id to box_captured
 
   if no marker found:
-    Turn counterclockwise and continue
+    turn counterclockwise and continue
   else if distance to marker is greater than dist_threshold:
     if rotation to marker is greater than angle_threshold:
-      Turn clockwise slightly and continue
+      turn clockwise slightly and continue
     else if rotation to marker is less than -angle_threshold:
-      Turn counterclockwise slightly and continue
+      turn counterclockwise slightly and continue
     else:
-      Drive forward based on distance to marker and continue
+      drive forward based on distance to marker and continue
   else:
     if not in group_mode and robot successfully grabs the box:
-      Add box to box_captured, switch to group mode, and increase dist_threshold to releasing_threshold
+      add box to box_captured, switch to group mode, and increase dist_threshold to releasing_threshold
     else if in group mode:
-      Release the box, switch off group mode, and reset dist_threshold
+      release the box, switch off group mode, and reset dist_threshold
     ELSE:
-      Drive backward and attempt to grab again
+      drive backward and attempt to grab again
 ```
 # Further improvements
 --------------------
