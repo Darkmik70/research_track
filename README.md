@@ -90,7 +90,7 @@ while True:
       add box to box_captured, switch to group mode, and increase dist_threshold to releasing_threshold
     else if in group mode:
       release the box, switch off group mode, and reset dist_threshold
-    ELSE:
+    else:
       drive backward and attempt to grab again
 ```
 # Further improvements
