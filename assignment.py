@@ -112,6 +112,7 @@ box_captured = []
 """ Lists of markers captured by robot"""
 
 group_mode = False
+""" boolean for searching mode. in first iteration set to false, as we look for the nearest box"""
 
 while 1:    
     dist, rot_y, box_id = find_marker(group_mode)
@@ -168,11 +169,14 @@ while 1:
             # Drop the box
             R.release()
             group_mode = False
-            dist_threshold = GRAB_THRESHOLD # set Threshold to be able to grab objects
+            dist_threshold = GRAB_THRESHOLD # make threshould smaller to be able to grab objects
             print(f"Box {box_captured[-1]} dumped") # The last element is the Robot should be holding
             print(f" Captured boxes: {box_captured}")
             # go back a little 
             drive_back(20, 3)
-
-    
-    
+            # State the succes
+            if len(box_captured) == 6:
+                print("JOB'S DONE")
+                time.sleep(3)
+                
+                  
