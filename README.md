@@ -96,6 +96,6 @@ while True:
 # Further improvements
 --------------------
 In author's opinion these could be additional changes to improve the project:
-
-
-
+[x] In the beginning of the main loop if statement can append box_id = -1, add proper handling
+[] Pass `box_captured`  as an argument to `find_marker()` instead of using it as a global variable that is changed in various places
+[] Refactor hardcoded values for speed and velocity with constants and local variables
