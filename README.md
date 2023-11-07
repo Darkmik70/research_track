@@ -10,6 +10,15 @@ The task for the first assignment was to write a python node that controls the r
 This simulator requires a Python 3  to be run correctly. For more information regarding installing, running, troubleshooting etc. please refer to the [original project](
 https://github.com/CarmineD8/python_simulator/tree/assignment23_python3)
 
+# Behavior
+The scripts makes robot to look for boxes in two modes. Depending on the `bool group_mode` robot is either searching for the group of boxes when `True` or the nearest box which is not in the group when `False`. In the first iteration the robot is saving the first spotted, **nearest** box as the one where it wants to put the rest of them and then begins searching for the rest of boxes.
+
+When robot obtains the orientation and distance from itself to the box it rotates to be aligned with the box and drives towards its targed. When it is close it slows down a bit to make sure the `R.grab()` will be succesful and then goes back to the grouped boxes. 
+
+While it drives back to the group, it considers the nearest location *any* of the boxes in the group, not just the first one.
+
+When all of the boxes are grouped, it drives back and starts searching for another box. This is considered to be the reaction to *accomplished task*.
+
 # Code Description
 This section explains sections of the code of the assignment
 
