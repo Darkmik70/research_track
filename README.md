@@ -19,7 +19,7 @@ This section explains sections of the code of the assignment
 
 `1.` Constants
 Global constants were used for threasholds for robots orientation and distance, depending whether the robot is trying to grab the object or realease it.
-```
+```python
 GRAB_THRESHOLD = 0.4
 RELEASE_THRESHOLD = GRAB_THRESHOLD * 1.5
 ANGLE_THRESHOLD = 2.0
@@ -29,7 +29,7 @@ Functions
 Here are some functions, with `find_marker()` being excluded of the logic are presented 
 
 `*` `drive(speed, seconds)` - This function provides robot to drive forwards. A variation, `drive_back(speed, seconds)` drives robot backwards 
-```
+```python
 def drive(speed, seconds):
     R.motors[0].m0.power = speed
     R.motors[0].m1.power = speed
@@ -40,7 +40,7 @@ def drive(speed, seconds):
 
 `*` `turn_cws(speed, seconds)` - allows robot to perform clockwise rotation. Variation `turn_cnt_cws(speed,seconds)` performs counter clockwise rotation
 
-```
+```python
 def turn_cws(speed, seconds):
     R.motors[0].m0.power = speed
     R.motors[0].m1.power = -speed
@@ -51,7 +51,7 @@ def turn_cws(speed, seconds):
 
 `2.` `find_marker(group_mode)`
 This function looks for boxes and identifies the target based on the robot's mode. The pseudocode presenting its operation:
-```
+```python
 function find_marker(group_mode):
   Initialize distance to 100
   for each marker seen by the robot:
@@ -69,7 +69,7 @@ function find_marker(group_mode):
 `3.` Main loop 
 This part will provides the pseudocode of the main loop operation.
 
-```
+```python
 declare:
   angle_threshold = ANGLE_THRESHOLD
   dist_threshold = GRAB_THRESHOLD
