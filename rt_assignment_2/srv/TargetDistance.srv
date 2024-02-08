@@ -1,0 +1,7 @@
+# Distance from robot's current position to the target, and average speeds in x and y
+---
+float64 dist_x
+float64 dist_y
+float64 dist
+float64 av_speed_x
+float64 av_speed_y

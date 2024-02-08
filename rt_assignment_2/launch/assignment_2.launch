@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="av_window_size" default="10" />
+    <param name="av_window_size" type="int" value="$(arg av_window_size)"/>
+
+    <include file="$(find assignment_2_2023)/launch/assignment1.launch"/>
+    
+    <node pkg="rt_assignment_2" type="rt_assignment_2_setTarget" name="set_target_ac" output="screen"/>
+    <node pkg="rt_assignment_2" type="get_last_target_service.py" name="get_last_target_service" output="screen"/>
+    <node pkg="rt_assignment_2" type="get_target_distance_service.py" name="get_distance_to_target_service" output="screen"/>
+</launch>
