@@ -35,6 +35,7 @@ add_service_files(
   FILES
   LastTarget.srv
   TargetDistance.srv
+  DistLeftObstacle.srv
 )
 
 ## Generate added messages and services with any dependencies listed here

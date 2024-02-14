@@ -7,6 +7,9 @@
 #include <rt_assignment_2/RobotTarget.h>
 #include <rt_assignment_2/RobotCancelGoal.h>
 #include <rt_assignment_2/RobotState.h>
+#include <rt_assignment_2/DistLeftObstacle.h>
+
+#include <sensor_msgs/LaserScan.h>
 
 #include <actionlib/client/simple_action_client.h>
 #include <nav_msgs/Odometry.h>
@@ -72,6 +75,12 @@ namespace rt_assignment_2
         */
         void robotStateCallback(const nav_msgs::Odometry::ConstPtr &msg);
 
+        //TODO ADD COMMENTS LATER // Exam stuff
+        void getDistanceToLeftObstacleCallback(rt_assignment_2::DistLeftObstacle::Request &req,
+                                               rt_assignment_2::DistLeftObstacle::Response &res);
+
+        void scanCallback(const sensor_msgs::LaserScan::ConstPtr &msg);
+
         /**
          * Callback function called when the goal is successfully completed or preempted.
         */
@@ -92,8 +101,11 @@ namespace rt_assignment_2
         ros::Subscriber sub_state_;     // Subscriber to robot's current position based on messages from /odom
         ros::Subscriber sub_target_;    // Subscriber to robot's new target based on msg type RobotTarget.msg
         ros::Subscriber sub_cancel_;    // Subscriber to cancel current robot's goal, msg type RobotCancelGoal.msg
+        ros::Subscriber sub_scan_;
 
         ros::Publisher pub_state_;      // Publisher to new
+
+        ros::ServiceServer get_dist_left_obstacle_service_; // Service to get distance to the left obstacle
 
         // Timer to robot's current position, that logs the current position from Planning feedback
         ros::Timer get_actual_pose_timer_; 
@@ -101,6 +113,11 @@ namespace rt_assignment_2
         
         double feedback_pos_x_;     // Feedback position x from Planning/Feedback
         double feedback_pos_y_;     // Feedback position x from Planning/feedback
+        double distance_to_left_obstacle_; // Got form scan
+
+        // Havent checked if the types are correct
+        double goal_x_;
+        double goal_y_;
     };
 }
 
